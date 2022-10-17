@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Deploy
         run: echo I am deploying to dev
+      - name: Echo
+        run: echo ${{ github.ref == 'main' && github.event.pull_request.merged == true && 'devWithoutApproval' }}
 
   deployToProd: 
     name: Deploy code to prod
