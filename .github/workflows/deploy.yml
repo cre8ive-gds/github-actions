@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run linting job
-        uses: ./.github/actions/testing.yml
+        uses: ./.github/actions/lint
 
   deployToDev: 
     name: Deploy code to dev
