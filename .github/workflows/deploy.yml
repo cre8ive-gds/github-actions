@@ -17,18 +17,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: [super-linter]
     environment: 
-      name: ${{ (github.ref == 'main' && github.event.pull_request.merged == true && 'devWithoutApproval') || 'Dev' }}
+      name: ${{ (github.ref == 'refs/heads/main' && github.event.pull_request.merged == true && '*Dev*'') || 'Dev' }}
       url: 'http://dev.myapp.com'
     steps:
       - name: Deploy
         run: echo I am deploying to dev
-      - name: Echo
-        run: echo ${{ github.ref == 'main' && github.event.pull_request.merged == true && 'devWithoutApproval' }}
-      - name: Echo github ref
-        run: echo ${{ github.ref == 'main' }}
-      - name: Echo github event
-        run: echo ${{ github.event }}
-      
+
   deployToProd: 
     name: Deploy code to prod
     needs: [deployToDev]
