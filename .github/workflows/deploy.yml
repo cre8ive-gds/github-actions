@@ -13,8 +13,8 @@ jobs:
         uses: ./.github/actions/greet
       - name: Echo github.event.ref
         run: echo ${{ github.event.ref }}
-      - name: Echo github.event.pull_request.merged
-        run: echo ${{ github.event.pull_request.merged }}
+      - name: Echo github.event
+        run: echo ${{ toJson(github.event) }}
       - name: Echo result
         run: echo  ${{ (github.event.ref == 'refs/heads/main' && github.event.pull_request.merged == true && '*Dev*') || 'Dev' }}
 
