@@ -1,0 +1,8 @@
+name: 'Linting workflow'
+description: 'Run linting commands'
+runs:
+  using: "composite"
+  steps: 
+    - run:
+      name: Run super-linter@v3
+      uses: github/super-linter@v3.17.0

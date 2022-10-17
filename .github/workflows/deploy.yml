@@ -3,14 +3,14 @@ on: push
 
 jobs:
   super-linter:
-    name: Lint code base
+    name: ${{github.actor}} is linting code base
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Run super-linter@v3
-        uses: github/super-linter@v3.17.0
+      - name: Run linting job
+        uses: ./.github/actions/greet
 
   deployToDev: 
     name: Deploy code to dev

@@ -1,0 +1,7 @@
+name: 'Greeting workflow'
+description: 'Run command that greets the user'
+runs:
+  using: "composite"
+  steps: 
+    - run: echo Hello ${{github.actor}}.
+      shell: bash
