@@ -24,7 +24,11 @@ jobs:
         run: echo I am deploying to dev
       - name: Echo
         run: echo ${{ github.ref == 'main' && github.event.pull_request.merged == true && 'devWithoutApproval' }}
-
+      - name: Echo github ref
+        run: echo ${{ github.ref == 'main' }}
+      - name: Echo github event
+        run: echo ${{ github.event }}
+      
   deployToProd: 
     name: Deploy code to prod
     needs: [deployToDev]
