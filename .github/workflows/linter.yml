@@ -11,3 +11,24 @@ jobs:
 
       - name: Run super-linter@v3
         uses: github/super-linter@v3.17.0
+
+  deployToDev: 
+    name: Deploy code to dev
+    needs: [super-linter]
+    environment: 
+      name: Dev
+      url: 'http://dev.myapp.com'
+    steps:
+      - name: Deploy
+        run: echo I am deploying to dev
+
+  deployToProd: 
+    name: Deploy code to prod
+    if: github.event.ref == 'refs/heads/main'
+    needs: [super-linter]
+    environment: 
+      name: Dev
+      url: 'http://dev.myapp.com'
+    steps:
+      - name: Deploy
+        run: echo I am deploying to prod
