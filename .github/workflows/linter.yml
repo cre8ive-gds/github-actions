@@ -9,8 +9,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Run super-linter@v3
-        uses: github/super-linter@v3.17.0
+      - name: Run linting job
+        uses: ./.github/actions/testing.yml
 
   deployToDev: 
     name: Deploy code to dev
